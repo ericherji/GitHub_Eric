@@ -69,19 +69,25 @@
 								<form id="login-form" action="register3.html" method="post" role="form" style="display: block;">
 									<h4>Informação Geral:</h4>
 									<div class="form-group">
-										<input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="Rua, Número da porta" value="">
+										<input type="text" name="address" id="geocomplete" tabindex="1" class="form-control" placeholder="Insira a sua morada" value="" onFocus="geolocate()"></input>
 									</div>
 									<div class="form-group">
-										<input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="Código Postal" value="">
+										<input type="text" name="route" id="route" tabindex="1" class="form-control" placeholder="Rua" value="">
 									</div>
 									<div class="form-group">
-										<input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="Localidade" value="">
+										<input type="text" name="postal_code" id="postal_code" tabindex="1" class="form-control" placeholder="Código Postal" value="">
 									</div>
 									<div class="form-group">
-										<input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="Cidade" value="">
+										<input type="text" name="sublocality" id="sublocality" tabindex="1" class="form-control" placeholder="Localidade" value="">
 									</div>
 									<div class="form-group">
-										<input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="País" value="">
+										<input type="text" name="locality" id="locality" tabindex="1" class="form-control" placeholder="Cidade" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="country" id="country" tabindex="1" class="form-control" placeholder="País" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="country_short" id="country_short" tabindex="1" class="form-control" placeholder="Código do País" value="">
 									</div>
 									<div class="form-group">
 										<input type="text" name="name_place" id="name_place" tabindex="2" class="form-control" placeholder="Nome do Estabelecimento">
@@ -125,9 +131,9 @@
 											</div>
 										</div>
 									</div>
-									<section id="section-map" class="clearfix">
-										<div id="google-map" data-latitude="38.7368192" data-longitude="-9.138704999999959"></div>
-									</section>
+									<!-- <section id="section-map" class="clearfix"> -->
+									<div class="map_canvas"></div>
+									<!-- </section> -->
 									<p></p><p></p>
 									<div class="form-group">
 										<div class="row">
@@ -149,7 +155,15 @@
 	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHS9Eu6NGta_h9JfB7fE-W3WWrraoXtQc&callback=myMap"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHS9Eu6NGta_h9JfB7fE-W3WWrraoXtQc&libraries=places"></script>
+	<script src="js/google_maps.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/geocomplete/jquery.geocomplete.js"></script>
+	<script src="js/geocomplete/jquery.geocomplete.min.js"></script>
+    <script src="js/geocomplete/logger.js"></script>
+	
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.isotope.min.js"></script>
 	<script src="js/jquery.nicescroll.min.js"></script>
@@ -161,23 +175,34 @@
 	<script src="js/responsive-slider.js"></script>
 	<script src="js/jquery.appear.js"></script>
 	<script src="js/grid.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main2.js"></script>
     <script src="js/wow.min.js"></script>
 	<script src="js/reg_form_style.js"></script>
 	<script src="js/social_button_login.js"></script>
 	<script>wow = new WOW({}).init();</script>
     <script src="contactform/contactform.js"></script>
 	
+	<script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          blur: true,
+          geocodeAfterResult: true
+        });
+      });
+    </script>
+	
+	<script>
+	$(function(){
+		var a=parsefloat(document.getElementById("lat"))
+		var b=parsefloat(document.getElementById("lng"))
+	    document.getElementById("google-map".data-latitude).innerHTML = a;
+		document.getElementById("google-map").data-longitude.innerHTML = b;
+
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	</script>
 	
 	</body>
 </html>

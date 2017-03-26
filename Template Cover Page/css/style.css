@@ -517,7 +517,7 @@ padding-top: 30px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  margin: 0 10px;
+  margin: 0 15px;
   padding: 40px 20px;
   background: #ffffff;
   list-style: none;
@@ -1680,6 +1680,10 @@ div.cform-response-output {
     height: 400px;
 }
 
+.map_canvas { 
+    position:relative;
+    height: 400px;
+}
 
 /*====================
   Clients
